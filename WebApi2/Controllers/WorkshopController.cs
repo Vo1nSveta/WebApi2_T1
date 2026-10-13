@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WorkshopWebApi.Data;
 using WorkshopWebApi.Models;
-using WorkshopWebApi.Data;
 
 namespace WorkshopWebApi.Controllers
 {
