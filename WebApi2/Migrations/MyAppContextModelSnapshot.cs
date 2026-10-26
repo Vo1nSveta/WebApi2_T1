@@ -16,17 +16,13 @@ namespace WorkshopWebApi.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.31");
 
-            modelBuilder.Entity("WebApi2.Data.Equipment", b =>
+            modelBuilder.Entity("WorkshopClientApp.Data.Equipment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("NameEquipment")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NumberEquipment")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -35,10 +31,13 @@ namespace WorkshopWebApi.Migrations
                     b.ToTable("Equipment");
                 });
 
-            modelBuilder.Entity("WebApi2.Data.Workshop", b =>
+            modelBuilder.Entity("WorkshopWebApi.Data.Workshop", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EquipmentId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("GroupWorkshop")
@@ -51,7 +50,20 @@ namespace WorkshopWebApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EquipmentId");
+
                     b.ToTable("Workshop");
+                });
+
+            modelBuilder.Entity("WorkshopWebApi.Data.Workshop", b =>
+                {
+                    b.HasOne("WorkshopClientApp.Data.Equipment", "Equipment")
+                        .WithMany()
+                        .HasForeignKey("EquipmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Equipment");
                 });
 #pragma warning restore 612, 618
         }

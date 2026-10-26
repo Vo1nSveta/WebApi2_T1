@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WorkshopClientApp.Data;
 using WorkshopWebApi.Data;
 
 namespace WorkshopWebApi.Data
 {
     public class MyAppContext : DbContext
     {
+        
         public DbSet<Workshop> Workshop { get; set; }
 
         public DbSet<Equipment> Equipment { get; set; }

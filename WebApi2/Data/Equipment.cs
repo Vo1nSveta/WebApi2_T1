@@ -1,14 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WorkshopWebApi.Data
+namespace WorkshopClientApp.Data
 {
     public class Equipment
     {
         [Key]
         public int Id { get; set; }
-        
-        public string NameEquipment { get; set; } = string.Empty;
 
-        public string NumberEquipment { get; set; } = string.Empty;
+        public string Name { get; set; }
     }
 }

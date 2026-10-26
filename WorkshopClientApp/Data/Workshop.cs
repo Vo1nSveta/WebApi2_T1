@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WorkshopClientApp.Data
 {
@@ -10,5 +11,6 @@ namespace WorkshopClientApp.Data
         
         public string NameWorkshop { get; set; }
         public string GroupWorkshop { get; set; }
+
     }
 }

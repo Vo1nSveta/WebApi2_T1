@@ -1,3 +1,5 @@
+using WorkshopClientApp.Services;
+
 namespace WorkshopClientApp
 {
     public class Program
@@ -8,6 +10,14 @@ namespace WorkshopClientApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+
+            builder.Services.AddHttpClient<WorkshopClientService>(x => {
+                x.BaseAddress = new Uri("http://localhost:5514");
+                });
+
+
+
 
             var app = builder.Build();
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorkshopWebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d087cfc7116ce80954a5f62e57f15cb174c0711")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+baff2b13a32fa8aef0fc40306ebeb18f5d84ddbb")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorkshopWebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorkshopWebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

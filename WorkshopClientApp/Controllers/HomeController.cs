@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using WorkshopClientApp.Data;
 using WorkshopClientApp.Models;
+using WorkshopClientApp.Services;
 
 namespace WorkshopClientApp.Controllers
 {
@@ -10,72 +11,32 @@ namespace WorkshopClientApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly WorkshopClientService _workshopClientService;
+        public HomeController(ILogger<HomeController> logger, WorkshopClientService workshopClientService)
         {
             _logger = logger;
+            _workshopClientService = workshopClientService;
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(string nameWorkshop, string groupWorkshop)
         {
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync("http://localhost:5514/Workshop");
-
-            if (!response.IsSuccessStatusCode)
-            {
-                return View(new List<Workshop>());
-            }
-
-            var responseText = await response.Content.ReadAsByteArrayAsync();
-
-            var jsonOptions = new JsonSerializerOptions()
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-
-            var workshops = JsonSerializer.Deserialize<List<Workshop>>(responseText, jsonOptions) ?? new List<Workshop>();
-
-            var query = workshops.AsQueryable();
-
-            if (!string.IsNullOrEmpty(nameWorkshop))
-            {
-                query = query.Where(x => x.NameWorkshop != null && x.NameWorkshop.Contains(nameWorkshop));
-            }
-
-            if (!string.IsNullOrEmpty(groupWorkshop))
-            {
-                query = query.Where(x => x.GroupWorkshop != null && x.GroupWorkshop.Contains(groupWorkshop));
-            }
-
-            var Workshop = query.ToList();
-
-            ViewBag.NameWorkshop = nameWorkshop;
-            ViewBag.GroupWorkshop = groupWorkshop;
-
-            return View(Workshop);
+            var responseData = await _workshopClientService.SearchWorkshops(nameWorkshop, groupWorkshop);
+         
+            return View(responseData);
         }
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync("http://localhost:5514/Workshop");
-            var responseText = await response.Content.ReadAsByteArrayAsync();
+            var worksopData = await _workshopClientService.GetWorkshopAll();
 
-            var jsonOptions = new JsonSerializerOptions()
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-
-            var responseData = JsonSerializer.Deserialize<List<Workshop>>(responseText, jsonOptions);
-
-            return View(responseData);
+            return View(worksopData);
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(WorkshopAddDto request)
         {
-            var httpClient = new HttpClient();
-            var response = await httpClient.PutAsJsonAsync("http://localhost:5514/Workshop", request);
+            await _workshopClientService.AddWorkshop(request);
 
             return RedirectToAction(nameof(Index));
         }
@@ -92,26 +53,16 @@ namespace WorkshopClientApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(WorkshopEditDto request)
         {
-            var httpClient = new HttpClient();
-            var response = await httpClient.PutAsJsonAsync("http://localhost:5514/Workshop", request);
-
+            await _workshopClientService.Edit(request);
+           
             return RedirectToAction(nameof(Index));
         }
         
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync($"http://localhost:5514/Workshop/{id}");
-            var responseText = await response.Content.ReadAsByteArrayAsync();
-
-            var jsonOptions = new JsonSerializerOptions()
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-
-            var responseData = JsonSerializer.Deserialize<Workshop>(responseText, jsonOptions);
-
+            var responseData = await _workshopClientService.GetWorkshopById(id);
+              
             return View(responseData);
         }
 
@@ -121,8 +72,7 @@ namespace WorkshopClientApp.Controllers
         public async Task<IActionResult> Remove(int id)
         {
 
-            var httpClient = new HttpClient();
-            var response = await httpClient.DeleteAsync($"http://localhost:5514/Workshop?workshopId={id}");
+            await _workshopClientService.Remove(id);
 
             return RedirectToAction(nameof(Index));
         }
