@@ -5,22 +5,21 @@
 
 <h2 class="h2">Добавление нового оборудования</h2>
 
-<form method="post" asp-action="Add">
+<form method="post">
     <div class="mb-3">
         <label for="nameWorkshop" class="form-label">Имя</label>
         <input type="text" name="nameWorkshop" id="nameWorkshop" class="form-control" required>
     </div>
-
     <div class="mb-3">
         <label for="groupWorkshop" class="form-label">Группа</label>
         <input type="text" name="groupWorkshop" id="groupWorkshop" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label for="groupWorkshop" class="form-label">Оборудование</label>
-        <select name="equipmentId">
+        <label for="name" class="form-label">Оборудование</label>
+        <select name="equipmentId" class="form-control">
             @foreach (var equipment in Model)
                 {
-                <option value="@equipment.Id"> @equipment</option>
+                <option value="@equipment.Id">@equipment.Name</option>
                 }
             </select>
     </div>

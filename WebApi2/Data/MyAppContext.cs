@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WorkshopClientApp.Data;
-using WorkshopWebApi.Data;
 
 namespace WorkshopWebApi.Data
 {

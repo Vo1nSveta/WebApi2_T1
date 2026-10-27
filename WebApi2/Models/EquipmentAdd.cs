@@ -2,8 +2,7 @@
 {
     public class EquipmentAdd
     {
-        public string NameEquipment { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
-        public string NumberEquipment { get; set; } = string.Empty;
     }
 }
