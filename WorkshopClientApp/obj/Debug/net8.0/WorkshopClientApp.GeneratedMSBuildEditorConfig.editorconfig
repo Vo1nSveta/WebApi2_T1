@@ -27,12 +27,24 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Lex/мага/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/WebApi2_T1/WebApi2_T1/WorkshopClientApp/Views/Home/AddEquipment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRFcXVpcG1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Lex/мага/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/WebApi2_T1/WebApi2_T1/WorkshopClientApp/Views/Home/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Lex/мага/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/WebApi2_T1/WebApi2_T1/WorkshopClientApp/Views/Home/EditEquipment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0RXF1aXBtZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Lex/мага/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/WebApi2_T1/WebApi2_T1/WorkshopClientApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Lex/мага/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/WebApi2_T1/WebApi2_T1/WorkshopClientApp/Views/Home/IndexEquipment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleEVxdWlwbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Lex/мага/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/WebApi2_T1/WebApi2_T1/WorkshopClientApp/Views/Home/Privacy.cshtml]

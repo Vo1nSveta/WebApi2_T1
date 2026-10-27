@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace WorkshopWebApi.Data
 {
@@ -15,6 +16,7 @@ namespace WorkshopWebApi.Data
         [ForeignKey(nameof(Equipment))]
         public int EquipmentId { get; set; }
 
+        [ValidateNever]
         public Equipment Equipment { get; set; }
     }
 }

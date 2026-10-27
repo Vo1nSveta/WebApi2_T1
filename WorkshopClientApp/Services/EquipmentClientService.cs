@@ -58,7 +58,7 @@ public class EquipmentClientService
 
     public async Task EditEquipment(EquipmentEditDto request)
     {
-        var response = await _httpClient.PutAsJsonAsync("/Equipment", request);
+        var response = await _httpClient.PatchAsJsonAsync("/Equipment", request);
 
         return;
     }

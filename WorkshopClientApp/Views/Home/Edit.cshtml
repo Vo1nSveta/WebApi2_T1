@@ -7,6 +7,9 @@
 <h2 class="h2">Редактирование цеха</h2>
 
 <form method="post">
+
+    <input type="hidden" name="Id" value="@Model?.Id" />
+
     <div class="mb-3">
         <label for="nameWorkshop" class="form-label">Название</label>
         <input type="text"

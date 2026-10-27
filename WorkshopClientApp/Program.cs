@@ -14,9 +14,13 @@ namespace WorkshopClientApp
 
             builder.Services.AddHttpClient<WorkshopClientService>(x => {
                 x.BaseAddress = new Uri("http://localhost:5514");
-                });
 
+            });
 
+            builder.Services.AddHttpClient<EquipmentClientService>(x => {
+                x.BaseAddress = new Uri("http://localhost:5514");
+
+            });
 
 
             var app = builder.Build();

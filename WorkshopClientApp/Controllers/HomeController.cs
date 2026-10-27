@@ -15,10 +15,13 @@ namespace WorkshopClientApp.Controllers
 
         private readonly EquipmentClientService _equipmentClientService;
 
-        public HomeController(ILogger<HomeController> logger, WorkshopClientService workshopClientService)
+        public HomeController(ILogger<HomeController> logger, 
+            WorkshopClientService workshopClientService, 
+            EquipmentClientService equipmentClientService)
         {
             _logger = logger;
             _workshopClientService = workshopClientService;
+            _equipmentClientService = equipmentClientService;
         }
 
         [HttpPost]
@@ -55,8 +58,14 @@ namespace WorkshopClientApp.Controllers
         #region -- Редактирование
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(WorkshopEditDto request)
         {
+            if (request.Id <= 0)
+            {
+                return BadRequest("Не передан корректный Id цеха.");
+            }
+
             await _workshopClientService.Edit(request);
 
             return RedirectToAction(nameof(Index));
@@ -81,8 +90,10 @@ namespace WorkshopClientApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //Методы Equipment (Оборудование)
+
         [HttpPost]
-        public async Task<IActionResult> Index(string name)
+        public async Task<IActionResult> IndexEquipment(string name)
         {
             var responseData = await _equipmentClientService.SearchEquipments(name);
 
@@ -92,9 +103,9 @@ namespace WorkshopClientApp.Controllers
         [HttpGet]
         public async Task<IActionResult> IndexEquipment()
         {
-            var worksopData = await _equipmentClientService.GetEquipmentAll();
+            var equipmentData = await _equipmentClientService.GetEquipmentAll();
 
-            return View(worksopData);
+            return View(equipmentData);
         }
 
         [HttpPost]
@@ -139,7 +150,7 @@ namespace WorkshopClientApp.Controllers
 
             await _equipmentClientService.RemoveEquipment(id);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexEquipment));
         }
 
         public IActionResult Privacy()

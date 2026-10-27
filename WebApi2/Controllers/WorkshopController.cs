@@ -100,16 +100,19 @@ namespace WorkshopWebApi.Controllers
         {
             var workshop = _context.Workshop.FirstOrDefault(x => x.Id == model.Id);
 
-            if (workshop != null)
-            {
+            if (workshop == null)
+            
+                {
+                    return NotFound();
+                }
+
                 workshop.NameWorkshop = model.NameWorkshop;
                 workshop.GroupWorkshop = model.GroupWorkshop;
 
-                _context.Update(workshop);
                 _context.SaveChanges();
 
                 return Ok();
-            }
+            
             return NotFound();
 
         }

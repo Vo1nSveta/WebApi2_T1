@@ -58,7 +58,7 @@ public class WorkshopClientService
 
     public async Task Edit(WorkshopEditDto request)
     {
-        var response = await _httpClient.PutAsJsonAsync("/Workshop", request);
+        var response = await _httpClient.PatchAsJsonAsync("/Workshop", request);
 
         return;
     }
