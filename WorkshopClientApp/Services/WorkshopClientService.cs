@@ -72,4 +72,14 @@ public class WorkshopClientService
         return responseData;
     }
 
+    public async Task<List<Equipment>> GetEquipmentAll()
+    {
+        var response = await _httpClient.GetAsync("/Equipment");
+        var responseText = await response.Content.ReadAsByteArrayAsync();
+
+        var responseData = JsonSerializer.Deserialize<List<Equipment>>(responseText, _jsonOptions);
+
+        return responseData;
+    }
+
 }

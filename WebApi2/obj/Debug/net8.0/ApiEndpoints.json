@@ -1,5 +1,25 @@
 [
   {
+    "ContainingType": "WorkshopWebApi.Controllers.EquipmentController",
+    "Method": "Get",
+    "RelativePath": "Equipment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[WorkshopWebApi.Data.Workshop, WorkshopWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "WorkshopWebApi.Controllers.WorkshopController",
     "Method": "Get",
     "RelativePath": "Workshop",

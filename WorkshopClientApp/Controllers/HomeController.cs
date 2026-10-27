@@ -42,10 +42,11 @@ namespace WorkshopClientApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
+            var equipments = await _workshopClientService.GetEquipmentAll();
 
-            return View();
+            return View(equipments);
         }
 
         #region -- Редактирование

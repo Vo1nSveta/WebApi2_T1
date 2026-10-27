@@ -69,7 +69,8 @@ namespace WorkshopWebApi.Controllers
             var workshop = new Workshop
             {                
                 NameWorkshop = request.NameWorkshop,
-                GroupWorkshop = request.GroupWorkshop
+                GroupWorkshop = request.GroupWorkshop,
+                EquipmentId = request.EquipmentId
             };
 
             _context.Workshop.Add(workshop);
